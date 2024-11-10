@@ -1,0 +1,16 @@
+{
+  "name": "music-recommendation-system",
+  "version": "1.0.0",
+  "description": "Using Linear Algebra and API integration to build a music recommendation system for Spotify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5"
+  }
+}
