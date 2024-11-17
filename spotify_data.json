@@ -1,0 +1,32 @@
+[
+    {
+        "id": "0ReoK9isNvJmI7nV2iJcNR",
+        "name": "Paper Soldier (feat. Joony)",
+        "artist": "Brent Faiyaz",
+        "album": "Paper Soldier (feat. Joony)",
+        "danceability": 0.687,
+        "energy": 0.598,
+        "tempo": 151.027,
+        "valence": 0.489
+    },
+    {
+        "id": "4RVwu0g32PAqgUiJoXsdF8",
+        "name": "Happier Than Ever",
+        "artist": "Billie Eilish",
+        "album": "Happier Than Ever",
+        "danceability": 0.332,
+        "energy": 0.225,
+        "tempo": 81.055,
+        "valence": 0.297
+    },
+    {
+        "id": "6z5y2kdxF4XrEVRFVqdGVL",
+        "name": "Asiwaju",
+        "artist": "Ruger",
+        "album": "RU The World",
+        "danceability": 0.867,
+        "energy": 0.584,
+        "tempo": 100.034,
+        "valence": 0.737
+    }
+]
