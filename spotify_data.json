@@ -28,5 +28,15 @@
         "energy": 0.584,
         "tempo": 100.034,
         "valence": 0.737
+    },
+    {
+        "id": "1GeNui6m825V8jP4uKiIaH",
+        "name": "Bad Bad Bad (feat. Lil Baby)",
+        "artist": "Young Thug",
+        "album": "So Much Fun",
+        "danceability": 0.974,
+        "energy": 0.596,
+        "tempo": 111.959,
+        "valence": 0.892
     }
 ]
