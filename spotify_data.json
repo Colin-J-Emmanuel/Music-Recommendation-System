@@ -48,5 +48,105 @@
         "energy": 0.716,
         "tempo": 104.014,
         "valence": 0.496
+    },
+    {
+        "id": "5FG7Tl93LdH117jEKYl3Cm",
+        "name": "Essence (feat. Tems)",
+        "artist": "Wizkid",
+        "album": "Made In Lagos",
+        "danceability": 0.849,
+        "energy": 0.707,
+        "tempo": 104.027,
+        "valence": 0.602
+    },
+    {
+        "id": "02rdXe0KhMe8p6ZHzYtuw0",
+        "name": "lost souls (with Brent Faiyaz)",
+        "artist": "Baby Keem",
+        "album": "The Melodic Blue",
+        "danceability": 0.649,
+        "energy": 0.347,
+        "tempo": 169.994,
+        "valence": 0.176
+    },
+    {
+        "id": "0RyA3o15NOLJYtm9NlDu5c",
+        "name": "Frat Rules (feat. A$AP Rocky, Playboi Carti & Big Sean)",
+        "artist": "A$AP Mob",
+        "album": "Cozy Tapes Vol. 2: Too Cozy",
+        "danceability": 0.635,
+        "energy": 0.777,
+        "tempo": 128.09,
+        "valence": 0.177
+    },
+    {
+        "id": "5CzjCrFiatUMK6Ln6oVPrQ",
+        "name": "Hallelujah (feat. Morgan Heritage)",
+        "artist": "Diamond Platnumz",
+        "album": "A Boy From Tandale",
+        "danceability": 0.568,
+        "energy": 0.689,
+        "tempo": 92.195,
+        "valence": 0.562
+    },
+    {
+        "id": "0fgosF2PWrYbyy9e7BclKz",
+        "name": "III. Telegraph Ave. (\"Oakland\" by Lloyd)",
+        "artist": "Childish Gambino",
+        "album": "Because the Internet",
+        "danceability": 0.497,
+        "energy": 0.693,
+        "tempo": 129.928,
+        "valence": 0.597
+    },
+    {
+        "id": "6tPX67OuLWJc8XOH4dkDNE",
+        "name": "Sunbathe",
+        "artist": "Tainy",
+        "album": "Sunbathe",
+        "danceability": 0.704,
+        "energy": 0.56,
+        "tempo": 88.048,
+        "valence": 0.479
+    },
+    {
+        "id": "28JBD8p18xNuOfyV7Cotdn",
+        "name": "Massive",
+        "artist": "Drake",
+        "album": "Honestly, Nevermind",
+        "danceability": 0.499,
+        "energy": 0.671,
+        "tempo": 124.994,
+        "valence": 0.0557
+    },
+    {
+        "id": "6dDDPV8S5meV46SamOnDNl",
+        "name": "Insecure",
+        "artist": "Sauti Sol",
+        "album": "Midnight Train",
+        "danceability": 0.68,
+        "energy": 0.585,
+        "tempo": 147.96,
+        "valence": 0.535
+    },
+    {
+        "id": "60dCQCXtY2OOQSfR3QnSYt",
+        "name": "Dear Ex",
+        "artist": "Marioo",
+        "album": "The Kid You Know",
+        "danceability": 0.777,
+        "energy": 0.617,
+        "tempo": 112.003,
+        "valence": 0.785
+    },
+    {
+        "id": "5mjxSIPHAMNk40q0nON5Cb",
+        "name": "Komasava (Comment \u00c7a Va)",
+        "artist": "Diamond Platnumz",
+        "album": "Komasava (Comment \u00c7a Va)",
+        "danceability": 0.863,
+        "energy": 0.837,
+        "tempo": 112.998,
+        "valence": 0.764
     }
 ]

@@ -23,7 +23,10 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
 # Now you can proceed with the rest of the Spotify API calls
 print("Spotify authentication successful!")
 
-track_ids = ['0ReoK9isNvJmI7nV2iJcNR', '4RVwu0g32PAqgUiJoXsdF8', '6z5y2kdxF4XrEVRFVqdGVL', '1GeNui6m825V8jP4uKiIaH', '0j2T0R9dR9qdJYsB7ciXhf']
+track_ids = ['0ReoK9isNvJmI7nV2iJcNR', '4RVwu0g32PAqgUiJoXsdF8', '6z5y2kdxF4XrEVRFVqdGVL', '1GeNui6m825V8jP4uKiIaH', '0j2T0R9dR9qdJYsB7ciXhf',
+              '5FG7Tl93LdH117jEKYl3Cm', '02rdXe0KhMe8p6ZHzYtuw0', '0RyA3o15NOLJYtm9NlDu5c', '5CzjCrFiatUMK6Ln6oVPrQ', '0fgosF2PWrYbyy9e7BclKz',
+              '6tPX67OuLWJc8XOH4dkDNE', '28JBD8p18xNuOfyV7Cotdn', '6dDDPV8S5meV46SamOnDNl', '60dCQCXtY2OOQSfR3QnSYt', '5mjxSIPHAMNk40q0nON5Cb']
+
 
 data = []
 
