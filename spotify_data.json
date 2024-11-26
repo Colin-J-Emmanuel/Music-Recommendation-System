@@ -248,5 +248,85 @@
         "energy": 0.93,
         "tempo": 147.124,
         "valence": 0.491
+    },
+    {
+        "id": "0zWbYGQq5O1KQd0iqzgjP6",
+        "name": "Rehab (Winter In Paris)",
+        "artist": "Brent Faiyaz",
+        "album": "Fuck The World",
+        "danceability": 0.549,
+        "energy": 0.242,
+        "tempo": 144.211,
+        "valence": 0.286
+    },
+    {
+        "id": "3YJJjQPAbDT7mGpX3WtQ9A",
+        "name": "Good Days",
+        "artist": "SZA",
+        "album": "Good Days",
+        "danceability": 0.436,
+        "energy": 0.655,
+        "tempo": 121.002,
+        "valence": 0.412
+    },
+    {
+        "id": "2VjXGuPVVxyhMgER3Uz2Fe",
+        "name": "Ex-Factor",
+        "artist": "Ms. Lauryn Hill",
+        "album": "The Miseducation of Lauryn Hill",
+        "danceability": 0.593,
+        "energy": 0.619,
+        "tempo": 80.02,
+        "valence": 0.668
+    },
+    {
+        "id": "2PzYqACbv12FNhrlHPfJEH",
+        "name": "He Loves Me (Lyzel in E Flat)",
+        "artist": "Jill Scott",
+        "album": "Who Is Jill Scott? - Words and Sounds, Vol. 1",
+        "danceability": 0.649,
+        "energy": 0.3,
+        "tempo": 99.989,
+        "valence": 0.294
+    },
+    {
+        "id": "0zWbYGQq5O1KQd0iqzgjP6",
+        "name": "Rehab (Winter In Paris)",
+        "artist": "Brent Faiyaz",
+        "album": "Fuck The World",
+        "danceability": 0.549,
+        "energy": 0.242,
+        "tempo": 144.211,
+        "valence": 0.286
+    },
+    {
+        "id": "62d6YXEYxmMWAuLpw1EysL",
+        "name": "Garden Kisses",
+        "artist": "Giveon",
+        "album": "Garden Kisses",
+        "danceability": 0.478,
+        "energy": 0.373,
+        "tempo": 120.129,
+        "valence": 0.354
+    },
+    {
+        "id": "7LaI3mRTJu66r9HKdv7iBx",
+        "name": "Gang Over Luv",
+        "artist": "Brent Faiyaz",
+        "album": "Sonder Son",
+        "danceability": 0.781,
+        "energy": 0.277,
+        "tempo": 163.987,
+        "valence": 0.302
+    },
+    {
+        "id": "4Sp4AgLbWeqddzY7DNhJFv",
+        "name": "In Love",
+        "artist": "Aaron May",
+        "album": "CHASE",
+        "danceability": 0.718,
+        "energy": 0.474,
+        "tempo": 74.942,
+        "valence": 0.319
     }
 ]
