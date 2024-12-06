@@ -34,3 +34,6 @@ Key Points:
 
 Used to install the python-dotenv library into your Python environment. The python-dotenv library is helpful for managing environment variables (eg. API keys, database credentials etc.) in Python projects.
 
+"pip install spotipy"
+
+Used to install the spotipy library—a Python tool used for programmatically interacting with the Spotify Web API.
