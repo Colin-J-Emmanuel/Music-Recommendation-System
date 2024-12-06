@@ -30,4 +30,7 @@ Key Points:
 	•	If the libraries are already installed, this command updates them to their newest available versions.
 	•	If the libraries are not installed, it installs the latest versions.
 
+"pip install python-dotenv"
+
+Used to install the python-dotenv library into your Python environment. The python-dotenv library is helpful for managing environment variables (eg. API keys, database credentials etc.) in Python projects.
 
