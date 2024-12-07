@@ -1,3 +1,4 @@
+# Importing necessary libraries
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
@@ -33,20 +34,6 @@ def hybrid_recommendation(
     """
     Recommend songs using a hybrid approach with weighted SVD and Cosine Similarity.
     Also calculate and return the average of each feature for the top N recommendations.
-
-    Args:
-        input_song_id (str): ID of the input song.
-        df (DataFrame): The original dataset containing song metadata.
-        reduced_feature_matrix (numpy.ndarray): Reduced feature matrix from SVD.
-        Vt (numpy.ndarray): Transpose of the SVD matrix V.
-        feature_columns (list): List of feature columns used for similarity.
-        svd_weight (float): Weight for SVD similarity.
-        cos_weight (float): Weight for Cosine similarity.
-        top_n (int): Number of recommendations to return.
-
-    Returns:
-        Tuple: DataFrame of recommendations with features and similarity scores, and
-               a Series of the average of each feature for the top N recommendations.
     """
     # Find the index of the input song in the dataset
     input_song_index = df[df['id'] == input_song_id].index[0]
@@ -78,14 +65,31 @@ def hybrid_recommendation(
     # Calculate the average of each feature for the top N recommendations
     feature_averages = top_recommendations[feature_columns].mean()
 
-    # Return the top N recommendations and the average of each feature
+    # Prepare the DataFrame with 8 columns as requested
+    # 4 columns for derived features and 4 initialized with 0 for spotify_avg
+    new_data = {
+        'danceability_derived': feature_averages['danceability'],
+        'energy_derived': feature_averages['energy'],
+        'tempo_derived': feature_averages['tempo'],
+        'valence_derived': feature_averages['valence'],
+        'spotify_avg_danceability': 0,  # Initialized to 0
+        'spotify_avg_energy': 0,        # Initialized to 0
+        'spotify_avg_tempo': 0,         # Initialized to 0
+        'spotify_avg_valence': 0        # Initialized to 0
+    }
+
+    # Convert the dictionary into a DataFrame
+    derived_df = pd.DataFrame([new_data])
+
+    # Save to CSV (append to existing file or create new)
+    derived_df.to_csv('spotify_recommendations.csv', mode='a', header=False, index=False)
+
     return feature_averages
 
-
-
-# Call the function
+# Call the function for a specific track
+track_id = '5N3hjp1WNayUPZrA8kJmJP'  # Replace with the track ID you want to find similar songs for
 recommendations_hybrid = hybrid_recommendation(
-    input_song_id='5N3hjp1WNayUPZrA8kJmJP', 
+    input_song_id=track_id, 
     df=df, 
     reduced_feature_matrix=reduced_feature_matrix, 
     Vt=Vt, 
@@ -94,5 +98,7 @@ recommendations_hybrid = hybrid_recommendation(
     svd_weight=0.6, 
     cos_weight=0.4
 )
+
+# Print the hybrid recommendations
 print("\nHybrid Recommendations:")
 print(recommendations_hybrid)
