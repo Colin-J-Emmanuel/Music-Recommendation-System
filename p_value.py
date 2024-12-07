@@ -2,9 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import pearsonr
+from sklearn.metrics import mean_squared_error
 
 # Load the data (replace 'your_file.csv' with the actual file path)
-df = pd.read_csv('stats.csv')
+df = pd.read_csv('spotify_stats_new.csv')
 
 ###########################################################################################
 
@@ -29,10 +30,14 @@ plt.legend()
 plt.show()
 
 # Calculate the Pearson correlation coefficient (r value)
-danceability_r_value = pearsonr(x, y)
-
+danceability_r_value = pearsonr(x, y)[0]
 # Print the r value
 print(f"Pearson Correlation Coefficient (r) for Danceability: {danceability_r_value}")
+
+# Calculate mse
+danceability_mse = np.sqrt(mean_squared_error(x, y))
+# Print the mse
+print(f"MSE for Danceability: {danceability_mse}")
 
 ###########################################################################################
 
@@ -57,10 +62,14 @@ plt.legend()
 plt.show()
 
 # Calculate the Pearson correlation coefficient (r value)
-valence_r_value = pearsonr(x, y)
-
+valence_r_value = pearsonr(x, y)[0]
 # Print the r value
 print(f"Pearson Correlation Coefficient (r) for Valence: {valence_r_value}")
+
+# Calculate mse
+valence_mse = np.sqrt(mean_squared_error(x, y))
+# Print the mse
+print(f"MSE for Valence: {valence_mse}")
 
 ###########################################################################################
 
@@ -85,10 +94,14 @@ plt.legend()
 plt.show()
 
 # Calculate the Pearson correlation coefficient (r value)
-tempo_r_value = pearsonr(x, y)
-
+tempo_r_value = pearsonr(x, y)[0]
 # Print the r value
 print(f"Pearson Correlation Coefficient (r) for Tempo: {tempo_r_value}")
+
+# Calculate mse
+tempo_mse = np.sqrt(mean_squared_error(x, y))
+# Print the mse
+print(f"MSE for Tempo: {tempo_mse}")
 
 ###########################################################################################
 
@@ -113,12 +126,19 @@ plt.legend()
 plt.show()
 
 # Calculate the Pearson correlation coefficient (r value)
-energy_r_value = pearsonr(x, y)
-
+energy_r_value = pearsonr(x, y)[0]
 # Print the r value
 print(f"Pearson Correlation Coefficient (r) for Energy: {energy_r_value}")
+
+# Calculate mse
+energy_mse = np.sqrt(mean_squared_error(x, y))
+# Print the mse
+print(f"MSE for Energy: {energy_mse}")
 
 ###########################################################################################
 
 avg_r_value = (energy_r_value + tempo_r_value + danceability_r_value + valence_r_value)/4
 print(f"Pearson Correlation Coefficient (r) Average: {avg_r_value}")
+
+avg_mse = (energy_mse + tempo_mse + danceability_mse + valence_mse) / 4
+print(f"Average MSE: {avg_mse}")
