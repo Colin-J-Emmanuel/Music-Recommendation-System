@@ -53,7 +53,7 @@ def recommend_songs_optimized(track_name, df, feature_columns, top_n=5):
     return similar_songs[['name', 'id', 'artist', 'album', 'similarity_score']].head(top_n)
 
 # Step 4: Example Usage: Recommend Similar Songs to a Specific Track
-track_name = 'Hands'  # Replace with the track_name you want to find similar songs for
+track_name = 'Massive'  # Replace with the track_name you want to find similar songs for
 recommendations = recommend_songs_optimized(track_name, df, feature_columns)
 
 # Step 5: Print Only the Recommendations
