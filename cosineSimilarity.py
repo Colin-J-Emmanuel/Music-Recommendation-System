@@ -21,14 +21,14 @@ df[feature_columns] = scaler.fit_transform(df[feature_columns])
 
 # ----------- Recommendation Function (Optimized) -----------
 
-# Function to recommend songs based on similarity
-def recommend_songs_optimized(track_name, df, feature_columns, top_n=5):
-    # Filter for the target song by name (it could have duplicates)
-    target_song_rows = df[df['name'] == track_name]
+# Function to recommend songs based on similarity (using track_id)
+def recommend_songs_optimized_by_id(track_id, df, feature_columns, top_n=5):
+    # Filter for the target song by track_id
+    target_song_rows = df[df['id'] == track_id]
     
     # If the song is not found, return an error message
     if target_song_rows.empty:
-        return f"'{track_name}' not found in the dataset!"  # Handles case where track_name isn't in the dataset
+        return f"Track ID '{track_id}' not found in the dataset!"  # Handles case where track_id isn't in the dataset
 
     # Get the feature vector for the target song (take the first match if there are multiple)
     target_song_features = target_song_rows.iloc[0][feature_columns].values.reshape(1, -1)
@@ -43,19 +43,19 @@ def recommend_songs_optimized(track_name, df, feature_columns, top_n=5):
     # Add similarity scores to the DataFrame
     similarity_df['similarity_score'] = similarity_scores
 
-    # Sort by similarity score and exclude the target song itself (all rows with the same track_name)
-    similar_songs = similarity_df[similarity_df['name'] != track_name].sort_values(by='similarity_score', ascending=False)
+    # Sort by similarity score and exclude the target song itself (all rows with the same track_id)
+    similar_songs = similarity_df[similarity_df['id'] != track_id].sort_values(by='similarity_score', ascending=False)
 
-    # Drop duplicate track names so that only unique songs are recommended
-    similar_songs = similar_songs.drop_duplicates(subset='name')
+    # Drop duplicate track IDs so that only unique songs are recommended
+    similar_songs = similar_songs.drop_duplicates(subset='id')
 
     # Select desired columns to print and return
     return similar_songs[['name', 'id', 'artist', 'album', 'similarity_score']].head(top_n)
 
-# Step 4: Example Usage: Recommend Similar Songs to a Specific Track
-track_name = 'Massive'  # Replace with the track_name you want to find similar songs for
-recommendations = recommend_songs_optimized(track_name, df, feature_columns)
+# Step 4: Example Usage: Recommend Similar Songs to a Specific Track ID
+track_id = '0ReoK9isNvJmI7nV2iJcNR'  # Replace with the track ID you want to find similar songs for
+recommendations = recommend_songs_optimized_by_id(track_id, df, feature_columns)
 
 # Step 5: Print Only the Recommendations
-print(f"Songs similar to '{track_name}':")
+print(f"Songs similar to the track with ID '{track_id}':")
 print(recommendations)
