@@ -32,6 +32,7 @@ def hybrid_recommendation(
 ):
     """
     Recommend songs using a hybrid approach with weighted SVD and Cosine Similarity.
+    Also calculate and return the average of each feature for the top N recommendations.
 
     Args:
         input_song_id (str): ID of the input song.
@@ -44,7 +45,8 @@ def hybrid_recommendation(
         top_n (int): Number of recommendations to return.
 
     Returns:
-        DataFrame: Recommendations with features and similarity scores.
+        Tuple: DataFrame of recommendations with features and similarity scores, and
+               a Series of the average of each feature for the top N recommendations.
     """
     # Find the index of the input song in the dataset
     input_song_index = df[df['id'] == input_song_id].index[0]
@@ -73,8 +75,12 @@ def hybrid_recommendation(
     sorted_recommendations = similarity_df.sort_values(by='combined_score', ascending=False)
     top_recommendations = sorted_recommendations.iloc[1:top_n + 1]  # Exclude the input song itself
 
-    # Include only the selected features and similarity scores
-    return top_recommendations[feature_columns]
+    # Calculate the average of each feature for the top N recommendations
+    feature_averages = top_recommendations[feature_columns].mean()
+
+    # Return the top N recommendations and the average of each feature
+    return feature_averages
+
 
 
 # Call the function
