@@ -83,7 +83,7 @@ def hybrid_recommendation(
 
 # Call the function
 recommendations_hybrid = hybrid_recommendation(
-    input_song_id='5N3hjp1WNayUPZrA8kJmJP', 
+    input_song_id='3SdTKo2uVsxFblQjpScoHy', 
     df=df, 
     reduced_feature_matrix=reduced_feature_matrix, 
     Vt=Vt, 
@@ -108,7 +108,7 @@ def average_features_for_songs(song_ids, df, feature_columns):
 df = pd.read_csv('cleaned_combined_data.csv')
 
 # Example usage
-song_ids = ['0ReoK9isNvJmI7nV2iJcNR', '4RVwu0g32PAqgUiJoXsdF8', '6z5y2kdxF4XrEVRFVqdGVL', '1GeNui6m825V8jP4uKiIaH', '0j2T0R9dR9qdJYsB7ciXhf']
+song_ids = ['1JO1xLtVc8mWhIoE3YaCL0', '0v0xgDXUyJyncvdscSpJvr', '1qCQTy0fTXerET4x8VHyr9', '62AuGbAkt8Ox2IrFFb8GKV', '40riOy7x9W7GXjyGp4pjAv']
 feature_columns = ['danceability', 'energy', 'tempo', 'valence']
 
 average_features = average_features_for_songs(song_ids, df, feature_columns)
@@ -131,5 +131,5 @@ stats_data = {
 stats_df = pd.DataFrame(stats_data)
 
 # Save to CSV
-stats_df.to_csv('spotify_stats_new.csv', index=False)
+stats_df.to_csv('spotify_stats_new.csv', mode='a', header=False, index=False)
 print("Data saved to spotify_stats_new.csv successfully.")
