@@ -5,6 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from scipy.sparse.linalg import svds
 
 # Since we do not have a user-song matrix per say, we can we work with our csv file
+
 # Load the csv file
 df = pd.read_csv("cleaned_combined_data.csv")
 
@@ -30,6 +31,36 @@ U, sigma, Vt = svds(feature_matrix, k=k)
 # Reconstruct the reduced feature matrix
 sigma = np.diag(sigma)  # Convert singular values into a diagonal matrix
 reduced_feature_matrix = np.dot(U, sigma)
+
+# Step 3: Recommend Songs for Input Song
+# def find_similar_songs(song_index, similarity_matrix, df, top_n=5):
+#     """
+#     Find the most similar songs to a given song.
+
+#     Args:
+#         song_index (int): Index of the input song in the dataset.
+#         similarity_matrix (numpy.ndarray): Song-to-song similarity matrix.
+#         df (DataFrame): Original dataset with song metadata.
+#         top_n (int): Number of similar songs to return.
+
+#     Returns:
+#         DataFrame: Top N similar songs with metadata.
+#     """
+#     # Get the similarity scores for the input song
+#     similarity_scores = similarity_matrix[song_index]
+
+#     # Sort indices by similarity score (descending)
+#     similar_song_indices = np.argsort(-similarity_scores)
+
+#     # Exclude the input song itself from the results
+#     similar_song_indices = similar_song_indices[similar_song_indices != song_index]
+
+#     # Get the top N similar songs
+#     top_similar_songs = similar_song_indices[:top_n]
+
+#     # Return the recommended songs
+#     return df.iloc[top_similar_songs][['song_id', 'song_title', 'artist']]
+
 
 # Recommending the song
 def recommend_songs(input_song_id, df, reduced_feature_matrix, Vt, top_n=5):
