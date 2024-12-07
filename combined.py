@@ -1,4 +1,3 @@
-# Importing necessary libraries
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
@@ -34,6 +33,20 @@ def hybrid_recommendation(
     """
     Recommend songs using a hybrid approach with weighted SVD and Cosine Similarity.
     Also calculate and return the average of each feature for the top N recommendations.
+
+    Args:
+        input_song_id (str): ID of the input song.
+        df (DataFrame): The original dataset containing song metadata.
+        reduced_feature_matrix (numpy.ndarray): Reduced feature matrix from SVD.
+        Vt (numpy.ndarray): Transpose of the SVD matrix V.
+        feature_columns (list): List of feature columns used for similarity.
+        svd_weight (float): Weight for SVD similarity.
+        cos_weight (float): Weight for Cosine similarity.
+        top_n (int): Number of recommendations to return.
+
+    Returns:
+        Tuple: DataFrame of recommendations with features and similarity scores, and
+               a Series of the average of each feature for the top N recommendations.
     """
     # Find the index of the input song in the dataset
     input_song_index = df[df['id'] == input_song_id].index[0]
@@ -65,31 +78,12 @@ def hybrid_recommendation(
     # Calculate the average of each feature for the top N recommendations
     feature_averages = top_recommendations[feature_columns].mean()
 
-    # Prepare the DataFrame with 8 columns as requested
-    # 4 columns for derived features and 4 initialized with 0 for spotify_avg
-    new_data = {
-        'danceability_derived': feature_averages['danceability'],
-        'energy_derived': feature_averages['energy'],
-        'tempo_derived': feature_averages['tempo'],
-        'valence_derived': feature_averages['valence'],
-        'spotify_avg_danceability': 0,  # Initialized to 0
-        'spotify_avg_energy': 0,        # Initialized to 0
-        'spotify_avg_tempo': 0,         # Initialized to 0
-        'spotify_avg_valence': 0        # Initialized to 0
-    }
-
-    # Convert the dictionary into a DataFrame
-    derived_df = pd.DataFrame([new_data])
-
-    # Save to CSV (append to existing file or create new)
-    derived_df.to_csv('spotify_recommendations.csv', mode='a', header=False, index=False)
-
+    # Return the top N recommendations and the average of each feature
     return feature_averages
 
-# Call the function for a specific track
-track_id = '5N3hjp1WNayUPZrA8kJmJP'  # Replace with the track ID you want to find similar songs for
+# Call the function
 recommendations_hybrid = hybrid_recommendation(
-    input_song_id=track_id, 
+    input_song_id='5N3hjp1WNayUPZrA8kJmJP', 
     df=df, 
     reduced_feature_matrix=reduced_feature_matrix, 
     Vt=Vt, 
@@ -98,7 +92,44 @@ recommendations_hybrid = hybrid_recommendation(
     svd_weight=0.6, 
     cos_weight=0.4
 )
+# print("\nHybrid Recommendations:")
+# print(recommendations_hybrid)
 
-# Print the hybrid recommendations
-print("\nHybrid Recommendations:")
-print(recommendations_hybrid)
+# Finding the average for spotify's
+def average_features_for_songs(song_ids, df, feature_columns):
+    # Filter the dataframe to include only the rows where the song ID matches
+    filtered_df = df[df['id'].isin(song_ids)]
+    
+    # Calculate the mean of the specified features for the selected songs
+    feature_averages = filtered_df[feature_columns].mean()
+    
+    return feature_averages
+
+df = pd.read_csv('cleaned_combined_data.csv')
+
+# Example usage
+song_ids = ['0ReoK9isNvJmI7nV2iJcNR', '4RVwu0g32PAqgUiJoXsdF8', '6z5y2kdxF4XrEVRFVqdGVL', '1GeNui6m825V8jP4uKiIaH', '0j2T0R9dR9qdJYsB7ciXhf']
+feature_columns = ['danceability', 'energy', 'tempo', 'valence']
+
+average_features = average_features_for_songs(song_ids, df, feature_columns)
+# print("Average features for the given songs:")
+# print(average_features)
+
+# Prepare data to save in CSV
+stats_data = {
+    'danceability_derived': [recommendations_hybrid['danceability']],
+    'energy_derived': [recommendations_hybrid['energy']],
+    'tempo_derived': [recommendations_hybrid['tempo']],
+    'valence_derived': [recommendations_hybrid['valence']],
+    'danceability_spotify': [average_features['danceability']],  # Empty columns for Spotify features
+    'valence_spotify': [average_features['valence']],
+    'tempo_spotify': [average_features['tempo']],
+    'energy_spotify': [average_features['energy']]
+}
+
+# Convert to DataFrame
+stats_df = pd.DataFrame(stats_data)
+
+# Save to CSV
+stats_df.to_csv('spotify_stats_new.csv', index=False)
+print("Data saved to spotify_stats_new.csv successfully.")
