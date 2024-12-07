@@ -83,7 +83,7 @@ def hybrid_recommendation(
 
 # Call the function
 recommendations_hybrid = hybrid_recommendation(
-    input_song_id='3SdTKo2uVsxFblQjpScoHy', 
+    input_song_id='1pYKzfOlpHWtVUiEIu4Vn7', 
     df=df, 
     reduced_feature_matrix=reduced_feature_matrix, 
     Vt=Vt, 
@@ -108,7 +108,7 @@ def average_features_for_songs(song_ids, df, feature_columns):
 df = pd.read_csv('cleaned_combined_data.csv')
 
 # Example usage
-song_ids = ['1JO1xLtVc8mWhIoE3YaCL0', '0v0xgDXUyJyncvdscSpJvr', '1qCQTy0fTXerET4x8VHyr9', '62AuGbAkt8Ox2IrFFb8GKV', '40riOy7x9W7GXjyGp4pjAv']
+song_ids = ['2zJZwWF7BTGIIvrAlgzJEx', '34ceTg8ChN5HjrqiIYCn9Q', '6WAhLCL1XchQzYjl15rnFp', '4b0JUNVDwcGdStrJD20M1A', '0FZmAvivvifvtN3pZScbw1']
 feature_columns = ['danceability', 'energy', 'tempo', 'valence']
 
 average_features = average_features_for_songs(song_ids, df, feature_columns)
