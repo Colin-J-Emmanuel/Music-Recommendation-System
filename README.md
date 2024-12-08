@@ -1,5 +1,5 @@
 # Music-Recommendation-System
-Using Linear Algebra and API integration to build a music recommendation system for Spotify
+Building a personalized music recommendation system using a combination of content-based and collaborative filtering techniques, linear Algebra, API integration, and probabilistic techniques. API used: Spotify Web API.
 
 --Project objectives, overview, and set-up instructions will be posted here--
 
