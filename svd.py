@@ -1,3 +1,4 @@
+# The single value decomposition (svd) algorithm
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler # for normalizing the song features
@@ -8,9 +9,6 @@ from scipy.sparse.linalg import svds
 
 # Load the csv file
 df = pd.read_csv("cleaned_combined_data.csv")
-
-# Since our dataset is huge, we can reduce the dataset size
-# df = df.head(1000)
 
 # Inspect the first few rows of the dataset
 print("Dataset Preview:")
@@ -31,36 +29,6 @@ U, sigma, Vt = svds(feature_matrix, k=k)
 # Reconstruct the reduced feature matrix
 sigma = np.diag(sigma)  # Convert singular values into a diagonal matrix
 reduced_feature_matrix = np.dot(U, sigma)
-
-# Step 3: Recommend Songs for Input Song
-# def find_similar_songs(song_index, similarity_matrix, df, top_n=5):
-#     """
-#     Find the most similar songs to a given song.
-
-#     Args:
-#         song_index (int): Index of the input song in the dataset.
-#         similarity_matrix (numpy.ndarray): Song-to-song similarity matrix.
-#         df (DataFrame): Original dataset with song metadata.
-#         top_n (int): Number of similar songs to return.
-
-#     Returns:
-#         DataFrame: Top N similar songs with metadata.
-#     """
-#     # Get the similarity scores for the input song
-#     similarity_scores = similarity_matrix[song_index]
-
-#     # Sort indices by similarity score (descending)
-#     similar_song_indices = np.argsort(-similarity_scores)
-
-#     # Exclude the input song itself from the results
-#     similar_song_indices = similar_song_indices[similar_song_indices != song_index]
-
-#     # Get the top N similar songs
-#     top_similar_songs = similar_song_indices[:top_n]
-
-#     # Return the recommended songs
-#     return df.iloc[top_similar_songs][['song_id', 'song_title', 'artist']]
-
 
 # Recommending the song
 def recommend_songs(input_song_id, df, reduced_feature_matrix, Vt, top_n=5):
@@ -95,46 +63,12 @@ def recommend_songs(input_song_id, df, reduced_feature_matrix, Vt, top_n=5):
     # Return the recommended songs with metadata
     return df.iloc[similar_song_indices][['id', 'name', 'artist']]
 
-    # # Compute similarity between the input song and all other songs
-    # song_similarities = cosine_similarity(
-    #     [reduced_feature_matrix[input_song_index]], reduced_feature_matrix
-    # )[0]
-
-    # # Sort songs by similarity, in descending order
-    # similar_song_indices = np.argsort(-song_similarities)
-
-    # # Exclude the input song itself from the recommendations
-    # similar_song_indices = similar_song_indices[similar_song_indices != input_song_index]
-
-    # # Get the top N recommendations
-    # top_recommendations = similar_song_indices[:top_n]
-
-    # # Return the recommended songs as a DataFrame
-    # return df.iloc[top_recommendations][['id', 'name', 'artist']]
-
-
 # Example Usage
 input_song_id = "5N3hjp1WNayUPZrA8kJmJP"  # Replace with the actual song_id from your dataset
 print("\nRecommendations for Input Song ID:", input_song_id)
 recommendations = recommend_songs(input_song_id, df, reduced_feature_matrix, Vt)
 print(recommendations)
 
-"""
-# Print the shape of the feature matrix
-print("Feature Matrix Shape:", feature_matrix.shape)
-
-# Optional: Inspect the first few rows of the feature matrix
-print("Feature Matrix (First 5 Rows):")
-print(feature_matrix[:5])
-"""
-
-"""
-# Build the recommendation system
-def recommend_songs(input_song_id, df, similarity_matrix, top_n=5):
-    song_index = df[df['song_id'] == input_song_id].index[0]
-    similar_songs = np.argsort(-similarity_matrix[song_index])[1:top_n + 1]
-    return df.iloc[similar_songs]
-"""
 # -------- The above approach works well with content-based filtering (when we don't have multiple user data or user-interaction data) ---------
 
 """
