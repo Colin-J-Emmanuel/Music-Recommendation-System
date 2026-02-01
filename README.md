@@ -1,39 +1,82 @@
-# Music-Recommendation-System
-Building a personalized music recommendation system using a combination of content-based and collaborative filtering techniques, linear Algebra, API integration, and probabilistic techniques. API used: Spotify Web API.
+# Spotify Music Recommendation System
 
---Project objectives, overview, and set-up instructions will be posted here--
+A hybrid recommendation engine that generates personalized song suggestions by combining content-based filtering (audio features, genre vectors) with collaborative filtering techniques. Built with Python and the Spotify Web API.
 
-Important commands for the project:
+## Overview
 
-"pip install -U numpy scipy scikit-learn" or "pip3 install -U numpy scipy scikit-learn"
+This project analyzes user listening patterns and playlist data to recommend new music. The system uses:
 
-Purpose: This command updates (or installs if not already installed) three Python libraries: NumPy, SciPy, and scikit-learn. Here’s what each of these libraries is used for:
+- **Content-based filtering**: Leverages Spotify's audio features (danceability, energy, valence, tempo, etc.) and genre vectors to find sonically similar tracks
+- **Collaborative filtering**: Identifies patterns across users with similar taste profiles
+- **Cosine similarity**: Measures track similarity in high-dimensional feature space
+- **SVD (Singular Value Decomposition)**: Reduces dimensionality for efficient similarity computation
 
-1. NumPy
+## Tech Stack
 
-	•	Purpose: Provides support for numerical computations, especially working with large, multi-dimensional arrays and matrices. It also has a wide array of mathematical functions to operate on these arrays.
-	•	Why update? To access the latest features, improvements, and bug fixes.
+- **Python** (93.7%) - Core recommendation logic
+- **JavaScript** (6.3%) - Spotify API authentication
+- **Spotify Web API** - Real-time playlist and audio feature data
+- **Libraries**: NumPy, SciPy, scikit-learn, Spotipy, python-dotenv
 
-2. SciPy
+## Project Structure
 
-	•	Purpose: Built on top of NumPy, SciPy provides additional modules for scientific computing tasks like optimization, integration, interpolation, eigenvalue problems, and more.
-	•	Why update? To ensure compatibility with the latest versions of other libraries (like NumPy) and improve performance or functionality.
+```
+├── auth.js                  # Spotify OAuth authentication
+├── cosineSimilarity.py      # Content-based similarity engine
+├── svd.py                   # Matrix factorization for collaborative filtering
+├── clean_data.py            # Data preprocessing pipeline
+├── combined.py              # Hybrid recommendation logic
+├── p_value.py               # Statistical validation
+├── dataCollectionFiles/     # Raw data collection scripts
+└── cleaned_combined_data.csv # Processed track dataset
+```
 
-3. scikit-learn
+## How It Works
 
-	•	Purpose: A machine learning library for Python. It provides tools for data preprocessing, model building, evaluation, and deployment, including classification, regression, clustering, and dimensionality reduction.
-	•	Why update? To use new machine learning algorithms or enhancements and keep up-to-date with recent developments.
+1. **Authentication**: User authorizes via Spotify OAuth to access their playlists
+2. **Data Collection**: System pulls track audio features and user listening history
+3. **Feature Extraction**: Normalizes audio features into comparable vectors
+4. **Similarity Computation**: Calculates cosine similarity between user preferences and candidate tracks
+5. **Ranking**: Returns top-N recommendations sorted by similarity score
 
-Key Points:
+## Getting Started
 
-	•	-U: Stands for “upgrade.” It ensures the latest versions of the libraries are installed.
-	•	If the libraries are already installed, this command updates them to their newest available versions.
-	•	If the libraries are not installed, it installs the latest versions.
+### Prerequisites
 
-"pip install python-dotenv"
+```bash
+pip install numpy scipy scikit-learn spotipy python-dotenv
+```
 
-Used to install the python-dotenv library into your Python environment. The python-dotenv library is helpful for managing environment variables (eg. API keys, database credentials etc.) in Python projects.
+### Setup
 
-"pip install spotipy"
+1. Create a Spotify Developer account and register an application
+2. Create a `.env` file with your credentials:
+   ```
+   SPOTIFY_CLIENT_ID=your_client_id
+   SPOTIFY_CLIENT_SECRET=your_client_secret
+   SPOTIFY_REDIRECT_URI=your_redirect_uri
+   ```
+3. Run authentication: `node auth.js`
+4. Generate recommendations: `python combined.py`
 
-Used to install the spotipy library—a Python tool used for programmatically interacting with the Spotify Web API.
+## Key Algorithms
+
+### Cosine Similarity
+Measures the angle between feature vectors to determine track similarity, independent of magnitude:
+
+```
+similarity = (A · B) / (||A|| × ||B||)
+```
+
+### SVD for Collaborative Filtering
+Decomposes the user-item matrix to discover latent factors representing underlying taste dimensions, enabling recommendations based on similar user behavior patterns.
+
+## Contributors
+
+- [Colin J. Emmanuel](https://github.com/Colin-J-Emmanuel)
+- [Jaden Hinton](https://github.com/Just-Jaden)
+- [Anya Jajodia](https://github.com/AnyaJajodia)
+
+## License
+
+This project was developed as part of coursework at Columbia University.
